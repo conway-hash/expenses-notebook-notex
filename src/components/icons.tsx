@@ -1,19 +1,19 @@
-import { Fire } from "@/icons/fire"
+import { Fire } from "@/icons/Fire"
 import { Zap } from "@/icons/Zap"
 import { WaterDrop } from "@/icons/WaterDrop"
-import { MoneyBill } from "@/icons/MoneyBill"
+import { Coin } from "@/icons/Coin"
 import { Profile } from "@/icons/Profile"
 import { Notifications } from "@/icons/Notifications"
-import { ArrowBendRightUp } from "@/icons/ArrowBendRightUp"
+import { ArrowLeft } from "@/icons/ArrowLeft"
 import { Plus } from "@/icons/Plus"
 
 export const Icons = {
   gas: Fire,
   electricity: Zap,
   water: WaterDrop,
-  cash: MoneyBill,
+  cash: Coin,
   profile: Profile,
   notifications: Notifications,
-  back: ArrowBendRightUp,
+  back: ArrowLeft,
   plus: Plus,
 }

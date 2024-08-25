@@ -21,9 +21,10 @@ import {
 } from "@/components/ui/chart"
 
 const chartData = [
-  { expense: "electricity", cost: 100, fill: "#F0CD4D" },
-  { expense: "gas", cost: 250, fill: "#FF4747" },
-  { expense: "water", cost: 287, fill: "#00BCB4" },
+  { expense: "electricity", cost: 450, fill: "#eab308" },
+  { expense: "gas", cost: 250, fill: "#ef4444" },
+  { expense: "water", cost: 287, fill: "#0ea5e9" },
+  { expense: "other", cost: 100, fill: "#22c55e" },
 ]
 
 const chartConfig = {
@@ -32,15 +33,19 @@ const chartConfig = {
   },
   electricity: {
     label: "Electricity",
-    color: "#F0CD4D",
+    color: "#eab308",
   },
   gas: {
     label: "Gas",
-    color: "#FF4747",
+    color: "#ef4444",
   },
   water: {
     label: "Water",
-    color: "#00BCB4",
+    color: "#0ea5e9",
+  },
+  other: {
+    label: "Other",
+    color: "#22c55e",
   },
 } satisfies ChartConfig
 

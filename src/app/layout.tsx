@@ -1,5 +1,12 @@
-import type { Metadata } from "next";
 import "./globals.css";
+
+import type { Metadata } from "next";
+import { Raleway } from 'next/font/google';
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ['400', '500', '700'],
+});
 
 export const metadata: Metadata = {
   title: "Notex - Notebook for expenses",
@@ -13,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="text-stone-700 bg-gradient-to-r from-emerald-200 from-0% via-green-200 via-30% to-emerald-50 to-100%">
+      <body className={raleway.className}>
         {children}
       </body>
     </html>
