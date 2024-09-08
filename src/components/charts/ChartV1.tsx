@@ -136,7 +136,14 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartV1() {
+interface ChartV1Props {
+  className?: string; // Optional className prop
+}
+
+export function ChartV1({
+  className,
+}: ChartV1Props
+) {
   const [timeRange, setTimeRange] = React.useState("90d")
 
   const filteredData = chartData.filter((item) => {
@@ -153,7 +160,7 @@ export function ChartV1() {
   })
 
   return (
-    <Card>
+    <Card className={className}>
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
           <CardTitle>Test Electricity Chart</CardTitle>
