@@ -25,5 +25,5 @@ export interface ExpenseItem {
 
 export interface InteractiveComponentsProps {
   className?: string; // Optional className prop
-  data?: ExpenseItem[]; // Array of expense items
+  data: ExpenseItem[]; // Array of expense items
 }
