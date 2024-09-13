@@ -16,9 +16,9 @@ export default function Page() {
           <Icons.plus className="w-6 h-6" fill="#494949"/>
         </button>
       </div>
+      {/* <ChartV1/>
       <ChartV1/>
-      <ChartV1/>
-      <ChartV1/>
+      <ChartV1/> */}
     </main>
   )
 }
