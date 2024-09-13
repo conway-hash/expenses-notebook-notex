@@ -1,0 +1,53 @@
+[
+  {
+    "expense": "gas",
+    "input_date": "2024-09-12",
+    "target_date": "2024-09-12",
+    "change_date": "2024-09-12",
+    "finish_cubic_metres": 23500,
+    "finish_kilowatt_hours": 262350,
+    "calculated_from": "last_value",
+    "start_cubic_metres": 23250,
+    "start_kilowatt_hours": 259559,
+    "amount_cubic_metres": 250,
+    "amount_kilowatt_hours": 2791,
+    "currency": "euro",
+    "cost_per_unit": 35.5,
+    "cost_source": "user_input",
+    "cost": 8875
+  },
+  {
+    "expense": "gas",
+    "input_date": "2024-09-12",
+    "target_date": "2024-09-11",
+    "change_date": "2024-09-12",
+    "finish_cubic_metres": 23250,
+    "finish_kilowatt_hours": 259559,
+    "calculated_from": "initial_value",
+    "start_cubic_metres": 23000,
+    "start_kilowatt_hours": 256768,
+    "amount_cubic_metres": 250,
+    "amount_kilowatt_hours": 2791,
+    "currency": "euro",
+    "cost_per_unit": 35.5,
+    "cost_source": "user_input",
+    "cost": 8875
+  },
+  {
+    "expense": "gas",
+    "input_date": "2024-09-10",
+    "target_date": "2024-09-10",
+    "change_date": "2024-09-10",
+    "finish_cubic_metres": 23000,
+    "finish_kilowatt_hours": 256768,
+    "calculated_from": "amount_value",
+    "start_cubic_metres": 22500,
+    "start_kilowatt_hours": 251186,
+    "amount_cubic_metres": 500,
+    "amount_kilowatt_hours": 5582,
+    "currency": "euro",
+    "cost_per_unit": 35.0,
+    "cost_source": "www.gasprice.com",
+    "cost": 17500
+  }
+]

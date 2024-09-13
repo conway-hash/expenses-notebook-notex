@@ -3,6 +3,8 @@
 import * as React from "react"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 
+import { InteractiveComponentsProps } from '@/lib/utils'
+
 import {
   Card,
   CardContent,
@@ -117,37 +119,30 @@ const chartData = [
   { date: "2024-06-25", desktop: 141, mobile: 190 },
   { date: "2024-06-26", desktop: 434, mobile: 380 },
   { date: "2024-06-27", desktop: 448, mobile: 490 },
-  { date: "2024-06-28", desktop: 149, mobile: 200 },
+  { date: "2024-09-12", desktop: 149, mobile: 200 },
   // { date: "2024-06-29", desktop: 103, mobile: 160 },
   // { date: "2024-06-30", desktop: 446, mobile: 400 },
 ]
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
+  cost: {
+    label: "Cost",
   },
-  desktop: {
-    label: "Desktop",
+  gas: {
+    label: "Gas",
     color: "hsl(var(--chart-1))",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig
 
-interface ChartV1Props {
-  className?: string; // Optional className prop
-}
-
 export function ChartV1({
   className,
-}: ChartV1Props
+  data
+}: InteractiveComponentsProps
 ) {
   const [timeRange, setTimeRange] = React.useState("90d")
 
-  const filteredData = chartData.filter((item) => {
-    const date = new Date(item.date)
+  const filteredData = data.filter((item) => {
+    const date = new Date(item.target_date)
     const now = new Date()
     let daysToSubtract = 90
     if (timeRange === "30d") {
@@ -163,9 +158,9 @@ export function ChartV1({
     <Card className={className}>
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
-          <CardTitle>Test Electricity Chart</CardTitle>
+          <CardTitle>Test Gas Chart</CardTitle>
           <CardDescription>
-            Showing total visitors for the last 3 months
+            Showing total cost of gas for the last 3 months
           </CardDescription>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
@@ -207,18 +202,6 @@ export function ChartV1({
                   stopOpacity={0.1}
                 />
               </linearGradient>
-              <linearGradient id="fillMobile" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-mobile)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-mobile)"
-                  stopOpacity={0.1}
-                />
-              </linearGradient>
             </defs>
             <CartesianGrid vertical={false} />
             <XAxis
@@ -250,14 +233,7 @@ export function ChartV1({
               }
             />
             <Area
-              dataKey="mobile"
-              type="natural"
-              fill="url(#fillMobile)"
-              stroke="var(--color-mobile)"
-              stackId="a"
-            />
-            <Area
-              dataKey="desktop"
+              dataKey="gas"
               type="natural"
               fill="url(#fillDesktop)"
               stroke="var(--color-desktop)"
