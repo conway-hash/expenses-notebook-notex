@@ -1,4 +1,3 @@
-import { ChartV1 } from "@/components/charts/ChartV1"
 import { Icons } from "@/components/icons"
 import Link from 'next/link'
 
