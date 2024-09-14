@@ -1,4 +1,4 @@
-import { InteractiveComponentsProps } from '@/lib/utils'
+import { TableProps } from '@/lib/utils'
 
 import {
   Table,
@@ -13,7 +13,7 @@ import {
 export function ExpensesTable({
   className,
   data,
-}: InteractiveComponentsProps
+}: TableProps
 ) {
   return (
     <Table className={className}>

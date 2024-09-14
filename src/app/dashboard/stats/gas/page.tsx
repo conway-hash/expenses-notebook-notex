@@ -1,10 +1,30 @@
 'use client'
 
 import { ExpensesTable } from "@/components/ExpensesTable"
-import { ChartV1 } from "@/components/charts/ChartV1"
+import { ExpensesChart } from "@/components/ExpensesChart"
 import { Icons } from "@/components/icons"
 import Link from 'next/link'
 import { useState } from 'react';
+
+import { DataType, DataKey } from '@/lib/utils'
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
+import { weekData, monthData, yearData } from "@/lib/data"
+
+const allData = {
+  w: weekData,
+  m: monthData,
+  y: yearData
+}
 
 import {
   Drawer,
@@ -17,66 +37,30 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 
-const data = [
-  {
-    expense: "gas",
-    input_date: "2024-09-12",
-    target_date: "2024-09-12",
-    change_date: "2024-09-12",
-    finish_cubic_metres: 23500,
-    finish_kilowatt_hours: 262350,
-    calculated_from: "last_value",
-    start_cubic_metres: 23250,
-    start_kilowatt_hours: 259559,
-    amount_cubic_metres: 250,
-    amount_kilowatt_hours: 2791,
-    currency: "euro",
-    cost_per_unit: 35.5,
-    cost_source: "user_input",
-    cost: 8875
-  },
-  {
-    expense: "gas",
-    input_date: "2024-09-12",
-    target_date: "2024-09-11",
-    change_date: "2024-09-12",
-    finish_cubic_metres: 23250,
-    finish_kilowatt_hours: 259559,
-    calculated_from: "initial_value",
-    start_cubic_metres: 23000,
-    start_kilowatt_hours: 256768,
-    amount_cubic_metres: 250,
-    amount_kilowatt_hours: 2791,
-    currency: "euro",
-    cost_per_unit: 35.5,
-    cost_source: "user_input",
-    cost: 8875
-  },
-  {
-    expense: "gas",
-    input_date: "2024-09-10",
-    target_date: "2024-09-10",
-    change_date: "2024-09-10",
-    finish_cubic_metres: 23000,
-    finish_kilowatt_hours: 256768,
-    calculated_from: "amount_value",
-    start_cubic_metres: 22500,
-    start_kilowatt_hours: 251186,
-    amount_cubic_metres: 500,
-    amount_kilowatt_hours: 5582,
-    currency: "euro",
-    cost_per_unit: 35.0,
-    cost_source: "www.gasprice.com",
-    cost: 17500
-  }
-]
+// import { TrendingUp } from "lucide-react"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 export default function Page() {
-  const [activeBtn, setActiveBtn] = useState<string>('left');
-
-  function handleClick(position: string) {
+  const [activeBtn, setActiveBtn] = useState<number>(0);
+  function handleClick(position: number) {
     setActiveBtn(position)
   }
+
+  const [data, setData] = useState<DataType[]>(weekData);
+  const [selectedValue, setSelectedValue] = useState<DataKey>('w');
+
+  const handleValueChange = (value: DataKey) => {
+    setSelectedValue(value);
+    setData(allData[value])
+  };
 
   return (
     <main className="flex flex-col gap-3 py-4 pt-20">
@@ -109,29 +93,57 @@ export default function Page() {
         </Drawer>
       </div>
 
-      <div className="h-10 flex px-4">
+      <div className="flex flex-col px-4 w-full gap-4">
         {/* <div className={`h-full w-1/2 bg-gray-400/50 absolute z-[0] rounded-md transition-transform ${activeBtn == 'left' ? 'translate-x-0' : 'translate-x-full'}`}></div> */}
-        <div className="h-full w-full flex rounded-md border bg-card">
-          <button className="h-full w-full rounded-md shadow-sm active:bg-gray-100/90 flex justify-center items-center gap-2 p-2" onClick={() => handleClick('left')}>
+        <div className="w-full flex rounded-md border bg-card h-10 ">
+          <button className="h-full w-full rounded-md shadow-sm active:bg-gray-100/90 flex justify-center items-center gap-2 p-2" onClick={() => handleClick(0)}>
             <p className="text-sm">Table</p>
           </button>
-          <button className="h-full w-full rounded-md shadow-sm active:bg-gray-100/90 flex justify-center items-center gap-2 p-2" onClick={() => handleClick('right')}>
+          <button className="h-full w-full rounded-md shadow-sm active:bg-gray-100/90 flex justify-center items-center gap-2 p-2" onClick={() => handleClick(1)}>
             <p className="text-sm">Graph</p>
           </button>
         </div>
+
+        <Select onValueChange={handleValueChange}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select a range" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Range</SelectLabel>
+              <SelectItem value="w">Week</SelectItem>
+              <SelectItem value="m">Month</SelectItem>
+              <SelectItem value="y">Year</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
 
-      <div className="flex px-4 overflow-x-scroll overflow-y-hidden no-scrollbar">
+      <div className="flex px-4 overflow-x-scroll overflow-y-hidden no-scrollbar w-full">
+      <Card className="w-full">
+        <CardHeader className="">
+          <CardTitle>{activeBtn == 0 ? "[TABLE]" : "[CHART]"}</CardTitle>
+          <CardDescription>[DATE_OF_RANGE]</CardDescription>
+        </CardHeader>
+        <CardContent>
         {
-          activeBtn == 'left' ?
-          (
-            <ExpensesTable className="bg-card rounded-md shadow-sm" data={data}/>
-          )
+          activeBtn == 0 ?
+            <ExpensesTable className="" data={data}/>
           :
-          (
-          <ChartV1 className="bg-card" data={data}/>
-          )
+            <ExpensesChart className="" range={selectedValue}  data={data} graphColor="#ef4444"/>
         }
+        </CardContent>
+        <CardFooter className="flex-col items-start gap-2 text-sm">
+          <div className="flex gap-2 font-medium leading-none">
+            [TREND]
+            {/* Trending up by 5.2% this month <TrendingUp className="h-4 w-4" /> */}
+          </div>
+          <div className="leading-none text-muted-foreground">
+            [INFO]
+            {/* Showing total visitors for the last 6 months */}
+          </div>
+        </CardFooter>
+      </Card>
       </div>
     </main>
   )

@@ -23,7 +23,21 @@ export interface ExpenseItem {
   cost: number;
 }
 
-export interface InteractiveComponentsProps {
+export interface DataType {
+  date: string; // Format: "YYYY-MM"
+  amount: number;
+};
+
+export type DataKey = 'w' | 'm' | 'y';
+
+export interface TableProps {
   className?: string; // Optional className prop
-  data: ExpenseItem[]; // Array of expense items
+  data: DataType[]; // Array of expense items
+}
+
+export interface GraphProps {
+  className?: string; // Optional className prop
+  data: DataType[]; // Array of expense items
+  graphColor: string;
+  range: DataKey;
 }
