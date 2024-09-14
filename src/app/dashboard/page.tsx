@@ -1,59 +1,99 @@
 import { Icons } from "@/components/icons"
 import Link from 'next/link'
 
+import {
+  Bell,
+  User,
+  Flame,
+  Zap,
+  Droplet,
+  ShoppingCart,
+  Settings,
+} from "lucide-react"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+import {
+  Button }
+from "@/components/ui/button"
+
 import { PieChartV1 } from "@/components/charts/PieChartV1"
 
 export default function Page() {
   return (
     <main className="flex flex-col gap-3 py-4">
 
-      <div className="flex justify-between px-4">
-        <div>
+      <div className="flex justify-between items-center px-4">
+        <div className="flex flex-col">
           <h2 className="font-normal">Good evening,</h2>
           <h1 className="text-xl font-medium">Anton Bokor</h1>
         </div>
         <div className="flex gap-2">
-          <button type="button" className="rounded-md flex justify-center items-center p-3 active:bg-stone-50/40  transition-colors">
-            <Icons.notifications className="w-6 h-6" fill="#44403c"/>
-          </button>
-          <button type="button" className="rounded-md flex justify-center items-center p-3 active:bg-stone-50/40 transition-colors">
-            <Icons.profile className="w-6 h-6" fill="#44403c"/>
-          </button>
+          <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon">
+              <Bell className="h-4 w-4" />
+          </Button>
+          <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon">
+              <User className="h-4 w-4" />
+          </Button>
+          <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon">
+              <Settings className="h-4 w-4" />
+          </Button>
         </div>
       </div>
 
-      <div className="w-full h-10 flex gap-3 overflow-x-scroll overflow-y-hidden no-scrollbar px-4">
-        <Link href="/dashboard/stats/electricity" className="h-full w-full rounded-md border bg-card shadow-sm active:bg-card/75 flex justify-center items-center gap-2 p-2">
-          <Icons.electricity className="w-3" fill="#eab308"/>
-          <p className="text-sm">Electricity</p>
-        </Link>
-        <Link href="/dashboard/stats/gas" className="h-full w-full rounded-md border bg-card shadow-sm active:bg-card/75 flex justify-center items-center gap-2 p-2">
-          <Icons.gas className="w-3" fill="#ef4444"/>
-          <p className="text-sm">Gas</p>
-        </Link>
-        <Link href="/dashboard/stats/water" className="h-full w-full rounded-md border bg-card shadow-sm active:bg-card/75 flex justify-center items-center gap-2 p-2">
-          <Icons.water className="w-3" fill="#0ea5e9"/>
-          <p className="text-sm">Water</p>
-        </Link>
-        <button className="h-full w-full rounded-md border bg-card shadow-sm active:bg-card/75 flex justify-center items-center gap-2 p-2">
-          <Icons.cash className="w-3" fill="#10b981"/>
-          <p className="text-sm">Other</p>
-        </button>
+      <div className="h-10 w-full px-4 flex gap-3 overflow-x-scroll overflow-y-hidden no-scrollbar">
+        <Button className='flex gap-2 bg-[#FFFFFF]' variant="outline" size="default" asChild>
+          <Link href="/dashboard/stats/electricity">
+            <Zap className="h-3 w-3" color="#eab308" strokeWidth={3} />
+            <p className="text-sm">Electricity</p>
+          </Link>
+        </Button>
+        <Button className='flex gap-2 bg-[#FFFFFF]' variant="outline" size="default" asChild>
+          <Link href="/dashboard/stats/gas">
+            <Flame className="h-3 w-3" color="#ef4444" strokeWidth={3} />
+            <p className="text-sm">Gas</p>
+          </Link>
+        </Button>
+        <Button className='flex gap-2 bg-[#FFFFFF]' variant="outline" size="default" asChild>
+          <Link href="/dashboard/stats/water">
+            <Droplet className="h-3 w-3" color="#0ea5e9" strokeWidth={3} />
+            <p className="text-sm">Water</p>
+          </Link>
+        </Button>
+        <Button className='flex gap-2 bg-[#FFFFFF]' variant="outline" size="default" asChild>
+          <Link href="/dashboard/stats/other">
+            <ShoppingCart className="h-3 w-3" color="#10b981" strokeWidth={3} />
+            <p className="text-sm">Other</p>
+          </Link>
+        </Button>
       </div>
 
-      <div className="w-full flex gap-3 overflow-x-scroll overflow-y-hidden no-scrollbar px-4">
-        <div className="rounded-lg border bg-card shadow-sm p-6 min-w-full">
-          <h1 className="font-bold text-lg">Lorem Ipsum</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec iaculis felis. Suspendisse potti.</p>
-        </div>
-        <div className="rounded-lg border bg-card shadow-sm p-6 min-w-full">
-          <h1 className="font-bold text-lg">Lorem Ipsum</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec iaculis felis. Suspendisse potti.</p>
-        </div>
-        <div className="rounded-lg border bg-card shadow-sm p-6 min-w-full">
-          <h1 className="font-bold text-lg">Lorem Ipsum</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec iaculis felis. Suspendisse potti.</p>
-        </div>
+      <div className="w-full px-4 flex gap-3 overflow-x-scroll overflow-y-hidden no-scrollbar">
+        <Card className="min-w-72">
+          <CardHeader className="">
+            <CardTitle>[NAME]</CardTitle>
+            <CardDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec iaculis felis. Suspendisse potti.</CardDescription>
+          </CardHeader>
+        </Card>
+        <Card className="min-w-72">
+          <CardHeader className="">
+            <CardTitle>[NAME]</CardTitle>
+            <CardDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec iaculis felis. Suspendisse potti.</CardDescription>
+          </CardHeader>
+        </Card>
+        <Card className="min-w-72">
+          <CardHeader className="">
+            <CardTitle>[NAME]</CardTitle>
+            <CardDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec iaculis felis. Suspendisse potti.</CardDescription>
+          </CardHeader>
+        </Card>
       </div>
 
       <div className="px-4 flex gap-3 overflow-x-scroll no-scrollbar">

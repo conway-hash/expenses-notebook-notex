@@ -1,11 +1,16 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Raleway } from 'next/font/google';
+import { Raleway, Inria_Sans } from 'next/font/google';
 
 const raleway = Raleway({
   subsets: ["latin"],
   weight: ['400', '500', '700'],
+});
+
+const inriaSans = Inria_Sans({
+  subsets: ["latin"],
+  weight: ['300', '400', '700'],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={raleway.className}>
+      <body className={inriaSans.className}>
         {children}
       </body>
     </html>
