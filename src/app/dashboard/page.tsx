@@ -49,25 +49,25 @@ export default function Page() {
       </div>
 
       <div className="h-10 w-full px-4 flex gap-3 overflow-x-scroll overflow-y-hidden no-scrollbar">
-        <Button className='flex gap-2 bg-[#FFFFFF]' variant="outline" size="default" asChild>
+        <Button className='flex gap-2 rounded-full bg-[#FFFFFF]' variant="outline" size="default" asChild>
           <Link href="/dashboard/stats/electricity">
             <Zap className="h-3 w-3" color="#eab308" strokeWidth={3} />
             <p className="text-sm">Electricity</p>
           </Link>
         </Button>
-        <Button className='flex gap-2 bg-[#FFFFFF]' variant="outline" size="default" asChild>
+        <Button className='flex gap-2 rounded-full bg-[#FFFFFF]' variant="outline" size="default" asChild>
           <Link href="/dashboard/stats/gas">
             <Flame className="h-3 w-3" color="#ef4444" strokeWidth={3} />
             <p className="text-sm">Gas</p>
           </Link>
         </Button>
-        <Button className='flex gap-2 bg-[#FFFFFF]' variant="outline" size="default" asChild>
+        <Button className='flex gap-2 rounded-full bg-[#FFFFFF]' variant="outline" size="default" asChild>
           <Link href="/dashboard/stats/water">
             <Droplet className="h-3 w-3" color="#0ea5e9" strokeWidth={3} />
             <p className="text-sm">Water</p>
           </Link>
         </Button>
-        <Button className='flex gap-2 bg-[#FFFFFF]' variant="outline" size="default" asChild>
+        <Button className='flex gap-2 rounded-full bg-[#FFFFFF]' variant="outline" size="default" asChild>
           <Link href="/dashboard/stats/other">
             <ShoppingCart className="h-3 w-3" color="#10b981" strokeWidth={3} />
             <p className="text-sm">Other</p>
@@ -78,7 +78,7 @@ export default function Page() {
       <div className="w-full px-4 flex gap-3 overflow-x-scroll overflow-y-hidden no-scrollbar">
         <Card className="min-w-72">
           <CardHeader className="">
-            <CardTitle>[NAME]</CardTitle>
+            <CardTitle>[NEWS]</CardTitle>
             <CardDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec iaculis felis. Suspendisse potti.</CardDescription>
           </CardHeader>
         </Card>

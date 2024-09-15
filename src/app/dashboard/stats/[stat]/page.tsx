@@ -12,7 +12,7 @@ import {
   ChevronRight,
   ChevronLeft,
   ArrowLeft,
-  CirclePlus,
+  Plus,
   EllipsisVertical,
   Flame,
   Zap,
@@ -113,9 +113,27 @@ export default function Page({ params }:{
 
   const currentStat: StatVariable = statVariables[params.stat]
 
+  const renderComponent = (className: string, color: string, strokeWidth: number) => {
+    switch (params.stat) {
+      case 'gas':
+        return <Flame className={className} color={color} strokeWidth={strokeWidth} />;
+      case 'electricity':
+        return <Zap className={className} color={color} strokeWidth={strokeWidth} />;
+      case 'water':
+        return <Droplet className={className} color={color} strokeWidth={strokeWidth} />;
+      case 'other':
+        return <ShoppingCart className={className} color={color} strokeWidth={strokeWidth} />;
+      default:
+        return <div>Invalid stat</div>; // Fallback if no matching stat is found
+    }
+  };
+
   return (
     <main className="py-4 flex flex-col gap-4 bg-[#FFFFFF]">
-      <div className='p-4 flex justify-between'>
+
+      <div className='p-4 flex justify-between relative z-10'>
+
+        {renderComponent("absolute left-0 -top-2 z-[-1] w-full h-20 opacity-25", currentStat.color, 3)}
 
         <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon" asChild>
           <Link href="/dashboard">
@@ -123,10 +141,10 @@ export default function Page({ params }:{
           </Link>
         </Button>
 
-        <h1 className='flex items-center gap-1 font-bold  text-lg'>
-          {currentStat.icon}
+        <CardTitle>
+          {/*className='flex items-center gap-1'*/}
           {capitalizeFirstLetter(params.stat)} Records
-        </h1>
+        </CardTitle>
 
         <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon">
             <EllipsisVertical className="h-4 w-4" />
@@ -139,7 +157,7 @@ export default function Page({ params }:{
           <Drawer>
             <Button className='h-8 min-w-14 rounded-full bg-[#FFFFFF]' variant="outline" size="icon" asChild>
               <DrawerTrigger>
-                <CirclePlus className="h-4 w-4" />
+                <Plus className="h-4 w-4" />
               </DrawerTrigger>
             </Button>
             <DrawerContent>
