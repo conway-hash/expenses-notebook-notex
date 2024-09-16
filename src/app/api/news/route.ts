@@ -8,7 +8,9 @@ export async function GET() {
   const url = `http://api.mediastack.com/v1/news?access_key=${apiKey}&countries=sk`;
 
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, {
+      cache: 'force-cache',
+    });
     const data = await response.json();
 
     return NextResponse.json(data);
