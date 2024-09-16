@@ -113,16 +113,16 @@ export default function Page({ params }:{
 
   const currentStat: StatVariable = statVariables[params.stat]
 
-  const renderComponent = (className: string, color: string, strokeWidth: number) => {
+  const renderComponent = (className: string, color: string, fill: string, strokeWidth: number) => {
     switch (params.stat) {
       case 'gas':
-        return <Flame className={className} color={color} strokeWidth={strokeWidth} />;
+        return <Flame className={className} color={color} fill={fill} strokeWidth={strokeWidth} />;
       case 'electricity':
-        return <Zap className={className} color={color} strokeWidth={strokeWidth} />;
+        return <Zap className={className} color={color} fill={fill} strokeWidth={strokeWidth} />;
       case 'water':
-        return <Droplet className={className} color={color} strokeWidth={strokeWidth} />;
+        return <Droplet className={className} color={color} fill={fill} strokeWidth={strokeWidth} />;
       case 'other':
-        return <ShoppingCart className={className} color={color} strokeWidth={strokeWidth} />;
+        return <ShoppingCart className={className} color={color} fill={fill} strokeWidth={strokeWidth} />;
       default:
         return <div>Invalid stat</div>; // Fallback if no matching stat is found
     }
@@ -133,7 +133,7 @@ export default function Page({ params }:{
 
       <div className='p-4 flex justify-between relative z-10'>
 
-        {renderComponent("absolute left-0 -top-2 z-[-1] w-full h-20 opacity-25", currentStat.color, 3)}
+        {renderComponent("absolute left-0 -top-2 z-[-1] w-full h-20 opacity-15", currentStat.color, 'transparent', 3)}
 
         <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon" asChild>
           <Link href="/dashboard">
@@ -141,9 +141,9 @@ export default function Page({ params }:{
           </Link>
         </Button>
 
-        <CardTitle>
+        <CardTitle className='truncate max-w-52 leading-0'>
           {/*className='flex items-center gap-1'*/}
-          {capitalizeFirstLetter(params.stat)} Records
+          {capitalizeFirstLetter(params.stat)}
         </CardTitle>
 
         <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon">
@@ -151,7 +151,7 @@ export default function Page({ params }:{
         </Button>
 
       </div>
-      <div className='px-4 flex flex-col gap-2'>
+      <div className='px-4 flex flex-col gap-2 relative z-10'>
         <div className='flex gap-2'>
 
           <Drawer>

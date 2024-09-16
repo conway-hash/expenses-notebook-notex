@@ -27,6 +27,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inriaSans.className}>
         {children}
+        <footer className="w-full flex justify-center flex-col items-center p-4 text-xs">
+          <p>Created with Love and Code (obviously).</p>
+          <a className="underline" href="https://www.tomasbokor.com" target="_blank" rel="noopener noreferrer" >By Tomáš Bokor</a>
+        </footer>
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import lineClamp from '@tailwindcss/line-clamp'
 
 const config = {
   darkMode: ["class"],
@@ -18,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      height: {
+        '15': '3.75rem',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -74,7 +78,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/line-clamp'),
+  ],
 } satisfies Config
 
 export default config
