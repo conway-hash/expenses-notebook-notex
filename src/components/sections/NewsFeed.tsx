@@ -53,9 +53,9 @@ export default function NewsPage() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-  <>
-  <div className="w-full px-4 flex gap-3 overflow-x-scroll overflow-y-hidden no-scrollbar relative">
-    <CardTitle className=''>Latest News</CardTitle>
+  <section>
+  <CardTitle className='px-4 text-4xl absolute left-4 opacity-20'>Latest News</CardTitle>
+  <div className="w-full px-4 flex gap-3 overflow-x-scroll overflow-y-hidden no-scrollbar relative z-10 mt-7">
     {loading ? (
       <>
       <Card className="min-w-72 p-4 flex flex-col gap-3">
@@ -88,6 +88,6 @@ export default function NewsPage() {
       ))
     )}
   </div>
-  </>
+  </section>
   );
 }

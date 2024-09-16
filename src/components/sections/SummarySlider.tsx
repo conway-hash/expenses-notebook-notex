@@ -10,8 +10,9 @@ import {
 
 export default function ExpensesSlider() {
   return (
-  <>
-  <div className="px-4 flex gap-3 overflow-x-scroll no-scrollbar">
+  <section>
+  <CardTitle className='px-4 text-4xl absolute left-4 opacity-20'>Summary</CardTitle>
+  <div className="px-4 flex gap-3 overflow-x-scroll no-scrollbar relative z-10 mt-7">
     <div className="min-w-[90%]">
       <PieChartV1/>
     </div>
@@ -24,6 +25,6 @@ export default function ExpensesSlider() {
       <PieChartV1/>
     </div>
   </div>
-  </>
+  </section>
   );
 }

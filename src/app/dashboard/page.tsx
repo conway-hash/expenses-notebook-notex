@@ -4,7 +4,13 @@ import {
   Bell,
   User,
   Settings,
+  EllipsisVertical,
 } from "lucide-react"
+
+import {
+  CardTitle,
+  CardDescription
+} from "@/components/ui/card"
 
 import {
   Button }
@@ -18,20 +24,24 @@ export default function Page() {
   return (
     <main className="flex flex-col gap-3 py-4">
 
-      <div className="flex justify-between items-center px-4">
+      <div className='px-4 flex justify-between'>
         <div className="flex flex-col">
-          <h2 className="font-normal">Good evening,</h2>
-          <h1 className="text-xl font-medium">Anton Bokor</h1>
+          <CardDescription>
+            Good Evening,
+          </CardDescription>
+          <CardTitle className='max-w-48 truncate'>
+            Anton Bokor
+          </CardTitle>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center">
           <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon">
-              <Bell className="h-4 w-4" />
+              <Settings className="h-4 w-4" />
           </Button>
           <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon">
               <User className="h-4 w-4" />
           </Button>
           <Button className='h-8 w-8 rounded-full bg-[#EEEFF3]' variant="outline" size="icon">
-              <Settings className="h-4 w-4" />
+              <Bell className="h-4 w-4" />
           </Button>
         </div>
       </div>
